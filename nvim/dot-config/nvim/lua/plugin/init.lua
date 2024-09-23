@@ -1,0 +1,6 @@
+require("plugin.lazy")
+require("plugin.whichkey")
+require("plugin.telescope")
+require("plugin.mason")
+require("plugin.lint")
+require("plugin.nvimcmp")
