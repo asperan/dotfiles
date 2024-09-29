@@ -25,6 +25,14 @@ require("lazy").setup({
         -- refer to the configuration section below
       }
     },
+    {
+        'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('nvim-web-devicons').setup {
+                default = true;
+            }
+        end
+    },
     -- the colorscheme should be available when starting Neovim
     {
         'asperan/chstr.nvim',
