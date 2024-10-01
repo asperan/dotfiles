@@ -1,7 +1,7 @@
 -- [[ Configure LSP ]]
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-    require("plugin.lsp_common_mappings").mappings(bufnr)
+    require("mappings.lsp_common").mappings(bufnr)
 end
 
 -- Enable the following language servers
