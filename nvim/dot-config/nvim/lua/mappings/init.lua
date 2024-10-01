@@ -3,17 +3,21 @@ local wk = require("which-key")
 wk.add(
     {
         mode = "n",
-        { "<leader>oc", "<cmd>Explore<cr>", desc = "Open NetRW in current file directory" },
-        { "<leader>or", function ()
-            require("utility")
-            local buffer_name = vim.api.nvim_buf_get_name(0)
-            local expanded_dir = op_lazy_ternary(
-                string.find(buffer_name, "^term:"), -- Check if buffer is a terminal
-                function() return string.sub(string.match(buffer_name, '^term:%/(%g%g-)%d+:'), 2, -2) end, -- retrieve base dir from terminal name
-                function() return vim.fn.getcwd() end -- Get current directory
-            )
-            vim.api.nvim_exec2(":Explore " .. expanded_dir, {})
+        {
+            group = "open",
+            "<leader>o",
+            { "<leader>oc", "<cmd>Explore<cr>", desc = "Open NetRW in current file directory" },
+            { "<leader>or", function ()
+                require("utility")
+                local buffer_name = vim.api.nvim_buf_get_name(0)
+                local expanded_dir = op_lazy_ternary(
+                    string.find(buffer_name, "^term:"), -- Check if buffer is a terminal
+                    function() return string.sub(string.match(buffer_name, '^term:%/(%g%g-)%d+:'), 2, -2) end, -- retrieve base dir from terminal name
+                    function() return vim.fn.getcwd() end -- Get current directory
+                )
+                vim.api.nvim_exec2(":Explore " .. expanded_dir, {})
             end, desc = "Open NetRW in base directory"},
+        },
         { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
         { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
         { "<leader>e", vim.diagnostic.open_float, desc = "Open floating diagnostic message" },
