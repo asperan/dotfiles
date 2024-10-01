@@ -1,5 +1,4 @@
 require("plugin.lazy")
-require("plugin.telescope")
 require("plugin.mason")
 require("plugin.lint")
 require("plugin.nvimcmp")
