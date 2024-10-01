@@ -22,6 +22,12 @@ wk.add(
             vim.fn.append(vim.fn.line(".") - 1, vim.fn.call("repeat", {{""}, vim.v.count1}))
             end, desc = "Create new lines above", silent = true },
         { "]<space>", function () vim.fn.append(vim.fn.line("."), vim.fn.call('repeat', {{""}, vim.v.count1})) end, desc = "Create new lines below", silent = true },
+        {
+            desc = "buffer",
+            "<leader>b",
+            { "d", '<cmd>lua vim.api.nvim_buf_delete(0, {force = (string.find(vim.api.nvim_buf_get_name(0), "^term:") ~= nil)})<cr>', desc = "Delete current buffer" },
+            { "t", '<cmd>terminal<cr>', desc = "Open a new terminal buffer" },
+        },
     },
     {
         mode = "t",
