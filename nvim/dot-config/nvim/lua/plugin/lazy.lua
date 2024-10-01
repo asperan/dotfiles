@@ -48,7 +48,11 @@ require("lazy").setup({
     },
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require("mappings.telescope").config()
+            pcall(require('telescope').load_extension, 'fzf')
+        end
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
