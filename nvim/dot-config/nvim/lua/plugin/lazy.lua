@@ -148,7 +148,7 @@ require("lazy").setup({
             'folke/neodev.nvim',
         },
     },
-    { 'mbbill/undotree', config = require("plugin.undotree").config },
+    { 'mbbill/undotree', config = require("mappings.undotree").config },
     {
         'ur4ltz/surround.nvim',
         config = function()
