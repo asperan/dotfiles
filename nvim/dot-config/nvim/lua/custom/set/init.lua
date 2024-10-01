@@ -61,6 +61,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- from https://stackoverflow.com/a/39967383
 vim.g.netrw_list_hide = '.*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\\.\\.\\=/\\=$'
 
+-- Set Undotree layout
+vim.g.undotree_WindowLayout = 2
+
 -- Enable folding with tree-sitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
