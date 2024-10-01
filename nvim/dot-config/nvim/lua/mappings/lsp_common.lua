@@ -10,8 +10,8 @@ function M.mappings(bufnr)
             "<leader>w",
             { "s", require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = "[W]orkspace [S]ymbols" },
             { "a", vim.lsp.buf.add_workspace_folder, desc = "[W]orkspace [A]dd folder" },
-            { "r", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder" },
-            { "l", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "[W]orkspace [L]ist Folders" },
+            { "r", vim.lsp.buf.remove_workspace_folder, desc = "[W]orkspace [R]emove Folder" },
+            { "l", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = "[W]orkspace [L]ist Folders" },
         },
         {
             desc = "refactor",
@@ -28,16 +28,16 @@ function M.mappings(bufnr)
         {
             desc = "[D]ocument",
             "<leader>d",
-            { "s", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols" },
+            { "s", require("telescope.builtin").lsp_document_symbols, desc = "[D]ocument [S]ymbols" },
         },
-        { "<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition" },
-        { "<leader>sh", vim.lsp.buf.signature_help, "[S]ignature [H]elp" },
+        { "<leader>D", vim.lsp.buf.type_definition, desc = "Type [D]efinition" },
+        { "<leader>sh", vim.lsp.buf.signature_help, desc = "[S]ignature [H]elp" },
         {
             desc = "alerts",
             "<leader>a",
-            { "a", vim.diagnostic.setqflist, "[A]lerts: [A]ll" },
-            { "e", function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.E }) end, "[A]lerts: [E]rrors" },
-            { "w", function () vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.W }) end, "[A]lerts: [W]arnings" },
+            { "a", vim.diagnostic.setqflist, desc = "[A]lerts: [A]ll" },
+            { "e", function() vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.E }) end, desc = "[A]lerts: [E]rrors" },
+            { "w", function () vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.W }) end, desc = "[A]lerts: [W]arnings" },
         },
         {
             desc = "Goto",
@@ -46,7 +46,7 @@ function M.mappings(bufnr)
             { "d", vim.lsp.buf.definition, desc = "[G]oto [D]efinition" },
             { "r", require("telescope.builtin").lsp_references, desc = "[G]oto [R]eferences" },
             { "i", vim.lsp.buf.implementation, desc = "[G]oto [I]mplementation" },
-            { "D", vim.lsp.buf.declaration, "[G]oto [D]eclaration" },
+            { "D", vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
         },
         -- See `:help K` for why this keymap
         { "K", vim.lsp.buf.hover, desc = "Hover Documentation", buffer = bufnr },
