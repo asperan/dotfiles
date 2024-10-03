@@ -1,6 +1,6 @@
 local bash_detection_group = vim.api.nvim_create_augroup("BashDetection", {})
 
-vim.api.nvim_create_autocmd("BufRead", {
+vim.api.nvim_create_autocmd("BufEnter", {
     group = bash_detection_group,
     pattern = "*",
     callback = function ()
