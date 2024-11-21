@@ -59,6 +59,10 @@ output * bg ~/.local/share/backgrounds/wallpaper-4k.jpeg fill
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+input type:keyboard {
+    xkb_layout "it"
+}
+
 ### Key bindings
 #
 # Basics:
