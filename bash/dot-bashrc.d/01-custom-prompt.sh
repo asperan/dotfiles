@@ -4,7 +4,7 @@ USER_COLOR="\[$(tput setaf 2 bold)\]"
 PWD_COLOR="\[$(tput setaf 6)\]"
 GIT_COLOR="\[$(tput setaf 3)\]"
 EXIT_STATUS_COLOR="\[$(tput setaf 1)\]"
-PROMPT_SYMBOL_COLOR="\[$(tput setaf 15 blink)\]"
+PROMPT_SYMBOL_COLOR="\[$(tput setaf 15)\]"
 
 RESET="\[$(tput sgr0)\]"
 
