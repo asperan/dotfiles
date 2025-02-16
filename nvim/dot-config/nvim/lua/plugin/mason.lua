@@ -12,7 +12,7 @@ end
 local servers = {
     rust_analyzer = {},
     ltex = {},
-    typst_lsp = {
+    tinymist = {
         settings = {
             exportPdf = "onSave",
         },
