@@ -1,15 +1,15 @@
 local M = {}
 
-function M.config() 
+function M.config()
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query", -- This 5 are the recommended ones
-            "bash", "comment", "dockerfile", "gitattributes", "gitignore", "ruby", "rust",
+            "bash", "comment", "dockerfile", "gitattributes", "gitignore", "rust",
         },
         sync_install = false,
         highlight = { enable = true },
-        indent = { enable = true },  
+        indent = { enable = true },
         incremental_selection = {
             enable = true,
             keymaps = {
