@@ -1,0 +1,16 @@
+[keyboard]
+bindings = [
+# Base mode bindings
+    { key = "W", mods = "Control | Shift", action = "Quit" },
+    { key = "F", mods = "Control", action = "SearchForward" },
+    { key = "B", mods = "Control", action = "SearchBackward" },
+# Search mode bindings
+    { key = "N", mods = "Control", mode = "Search", action = "SearchFocusNext" },
+    { key = "N", mods = "Control | Shift", mode = "Search", action = "SearchFocusPrevious" },
+    { key = "Backspace", mods = "Control", mode = "Search", action = "SearchDeleteWord" },
+    { key = "J", mods = "Control", mode = "Search", action = "SearchHistoryNext" },
+    { key = "K", mods = "Control", mode = "Search", action = "SearchHistoryPrevious" },
+    { key = "U", mods = "Control", mode = "Search", action = "SearchClear" },
+    { key = "Enter", mode = "Search", action = "SearchConfirm" },
+    { key = "Escape", mode = "Search", action = "SearchCancel" },
+]

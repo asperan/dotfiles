@@ -1,0 +1,8 @@
+[general]
+import = [
+    "theme.toml",
+    "font.toml",
+    "keyboard-bindings.toml",
+    "geometry.toml",
+]
+
