@@ -25,7 +25,7 @@ wk.add(
     },
     {
         mode = "t",
-        { "<esc>", "<c-\\><c-n>", desc = "Exit insert mode in terminal" }
+        -- { "<esc>", "<c-\\><c-n>", desc = "Exit insert mode in terminal", noremap = true }
     },
     {
         mode = { "n", "v" },
