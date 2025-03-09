@@ -212,4 +212,11 @@ while [ "${continue_asking_stow_packages}" == "yes" ]; do
 done
 
 # TODO: add Grub theme (BSOL)
+
+## Rust
+if ! command -v cargo >/dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile default --no-modify-path
+    rustup completions bash > "${SUDO_USER_BASH_COMPLETIONS_HOME}/rustup"
+    chown -R "${SUDO_USER}:${SUDO_USER_GROUP}" "${SUDO_USER_BASH_COMPLETIONS_HOME}"
+fi
 } && entrypoint
