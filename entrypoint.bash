@@ -140,8 +140,8 @@ install_packages "tuigreet" "greetd" "system-user-greeter"
 ## Sway
 install_packages "sway" "swaybg" "swaylock" "swayidle"
 
-## Wezterm
-install_packages "wezterm"
+## Terminal Emulator
+install_packages "alacritty"
 
 ## NVIM
 install_packages "neovim"
