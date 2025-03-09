@@ -30,6 +30,7 @@ PACKAGES=(
     "hyperfine" "hyperfine-bash-completion"
     "fd" "fd-bash-completion"
     "stow"
+    "bash-completion"
 )
 
 TMP_CONFIG_FILE="/tmp/configuration_output"
@@ -40,6 +41,7 @@ TMP_STOW_TARGET="/tmp/stow-target"
 SUDO_USER_GROUP="$(su - "${SUDO_USER}" -c groups)"
 SUDO_USER_HOME="/home/${SUDO_USER}"
 SUDO_USER_XDG_DATA_HOME="$(su - "${SUDO_USER}" -c env | grep 'XDG_DATA_HOME' || true)"
+SUDO_USER_BASH_COMPLETIONS_HOME="${SUDO_USER_XDG_DATA_HOME:-"${SUDO_USER_HOME}/.local/share"}/bash-completion/completions"
 USER_FONTS_DIR="${SUDO_USER_XDG_DATA_HOME:-"${SUDO_USER_HOME}/.local/share"}/fonts"
 
 FONT_VARIANT="IosevkaTermSS04"
@@ -145,6 +147,10 @@ install_packages "alacritty"
 
 ## NVIM
 install_packages "neovim"
+
+# Creating basic directories
+mkdir -p "${SUDO_USER_BASH_COMPLETIONS_HOME}"
+chown -R "${SUDO_USER}:${SUDO_USER_GROUP}" "${SUDO_USER_BASH_COMPLETIONS_HOME}"
 
 ## Hostname configuration
 hostnamectl hostname "${hostname}"
