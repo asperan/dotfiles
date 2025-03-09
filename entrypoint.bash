@@ -171,7 +171,7 @@ while [ "${continue_asking_stow_packages}" == "yes" ]; do
         --output-fd 3 \
         --title "Select Stow packages" \
         --checklist "Select the packages to stow from your dotfiles (select none to exit):" "${dialog_height}" "${dialog_width}" "20" \
-        $(for package in ./*; do echo "${package##*/} ${package##*/} off"; done )
+        $(find ./ -maxdepth 1 -mindepth 1 -type d -not -name '.*' -printf "%f %f off\n" | sort)
     dialog_exit_status="$?"
     exec 3>&-
     echo ""
