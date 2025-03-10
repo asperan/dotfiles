@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FORCE="false"
+REMOTE_NAME="origin"
+
+while [ "$#" -gt "0" ]; do
+    case "$1" in
+        -f|--force)
+            FORCE="true"
+            shift
+            ;;
+        -r|--remote-name)
+            REMOTE_NAME="$2"
+            shift
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+if "${FORCE}"; then
+    delete_option="-D"
+else
+    delete_option="-d"
+fi
+
+git fetch -p ; git branch -r | awk '{print $1}' | grep -E -v -f /dev/fd/0 <(git branch -vv | grep "${REMOTE_NAME}") | awk '{print $1}' | xargs git branch "${delete_option}"
