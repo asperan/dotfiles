@@ -38,7 +38,7 @@ TMP_CONFIG_RECAP_FILE="/tmp/config_recap"
 TMP_STOW_LIST="/tmp/stow-list"
 TMP_STOW_TARGET="/tmp/stow-target"
 
-SUDO_USER_GROUP="$(su - "${SUDO_USER}" -c groups)"
+SUDO_USER_GROUP="${SUDO_USER}"
 SUDO_USER_HOME="/home/${SUDO_USER}"
 SUDO_USER_XDG_DATA_HOME="$(su - "${SUDO_USER}" -c env | grep 'XDG_DATA_HOME' || true)"
 SUDO_USER_BASH_COMPLETIONS_HOME="${SUDO_USER_XDG_DATA_HOME:-"${SUDO_USER_HOME}/.local/share"}/bash-completion/completions"
