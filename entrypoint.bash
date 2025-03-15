@@ -189,7 +189,8 @@ while [ "${continue_asking_stow_packages}" == "yes" ]; do
         >&2 echo "Dialog cancelled. Exiting script"
         exit 1
     fi
-    if [ -n "$(cat  "${TMP_STOW_LIST}")" ]; then
+    sed -e 's/ /\r/g' -e '$a\' "${TMP_STOW_LIST}" | read -r -a packages_to_stow
+    if [ "${#packages_to_stow[@]}" -gt "0" ]; then
         exec 3<> "${TMP_STOW_TARGET}"
         dialog --erase-on-exit \
             --output-fd 3 \
@@ -203,7 +204,7 @@ while [ "${continue_asking_stow_packages}" == "yes" ]; do
             exit 1
         fi
         stow_target="$(cat "${TMP_STOW_TARGET}")"
-        stow -d "./" -t "${stow_target}" --adopt --dotfiles -v $(cat "${TMP_STOW_LIST}")
+        stow -d "./" -t "${stow_target}" --adopt --dotfiles -v "${packages_to_stow[@]}"
         if grep "/home/${SUDO_USER}" <(echo "${stow_target}") ; then
           chown -R "${SUDO_USER}:${SUDO_USER_GROUP}" "${stow_target}"
         fi
