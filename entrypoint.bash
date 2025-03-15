@@ -171,13 +171,17 @@ fi
 fc-cache "${FONT_TARGET_DIR}/${FONT_VARIANT}"
 
 continue_asking_stow_packages="yes"
+stow_packages=()
+for package in $(find ./ -maxdepth 1 -mindepth 1 -type d -not -name '.*' -printf "%f\n" | sort); do
+    stow_packages+=("${package}" "${package}" "off")
+done
 while [ "${continue_asking_stow_packages}" == "yes" ]; do
     exec 3<> "${TMP_STOW_LIST}"
     dialog --erase-on-exit \
         --output-fd 3 \
         --title "Select Stow packages" \
         --checklist "Select the packages to stow from your dotfiles (select none to exit):" "${dialog_height}" "${dialog_width}" "20" \
-        $(find ./ -maxdepth 1 -mindepth 1 -type d -not -name '.*' -printf "%f %f off\n" | sort)
+        "${stow_packages[@]}"
     dialog_exit_status="$?"
     exec 3>&-
     echo ""
