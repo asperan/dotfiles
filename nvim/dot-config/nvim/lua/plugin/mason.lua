@@ -35,6 +35,16 @@ mason_lspconfig.setup {
     ensure_installed = vim.tbl_keys(servers),
 }
 
+vim.lsp.config('', {
+    capabilities = capabilities,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        require('mappings.lsp_common').mappings(args.buf)
+    end
+})
+
 require("mason-tool-installer").setup({
     ensure_installed = {
         'shellcheck',
